@@ -5,8 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./components/img/Background.png");
-  background-size: auto 1300px;
+  background-color: grey;
   background-repeat: repeat-x;
   font-family: Helvetica, Arial, Sans-Serif;
   font-size: 15px;

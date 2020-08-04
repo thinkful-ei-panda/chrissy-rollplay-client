@@ -1,21 +1,16 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
-import PrivateRoute from './utils/private-route';
-import PublicRoute from './utils/public-route';
+import { Route } from 'react-router-dom'
 import Landing from './components/Landing/Landing';
-import DetailedTopic from './components/DetailedTopic/DetailedTopic.js';
-import TopicsList from './components/TopicsList/TopicsList.js';
+import DetailedTopic from './components/DetailedTopic/DetailedTopic';
 
 class App extends React.Component {
   render() {
     return (
       <>
         <main className="content-wrapper">
-          <PrivateRoute exact path='/topics' component={TopicsList} />
+          <Route exact path='/' component={Landing} />
 
-          <PrivateRoute path='/topics/:id' component={DetailedTopic} />
-
-          <PublicRoute exact path='/' component={Landing} />
+          <Route exact path='/topics/:id' component={DetailedTopic} />
         </main>
       </>
     )

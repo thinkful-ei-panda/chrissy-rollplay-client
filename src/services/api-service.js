@@ -14,7 +14,7 @@ const ApiService = {
       )
   },
   getTopic(topicId) {
-    return fetch(`${config.API_ENDPOINT}/topics/${topicId}`, {
+    return fetch(`${config.API_ENDPOINT}topics/${topicId}`, {
       headers: {
       },
     })

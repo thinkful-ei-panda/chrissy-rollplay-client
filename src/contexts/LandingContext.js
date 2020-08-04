@@ -1,81 +1,45 @@
 import React, { Component } from 'react';
-import UserService from '../services/user-service';
 
 const LandingContext = React.createContext({
-  username: "",
-  loggedIn: false,
-  error: null,
-  isRegistering: false,
-  loggingIn: false,
-  handleLoginState: () => {},
-  handleRegistering: () => {},
-  handleLoggingIn: () => {},
-  handleClearLog: () => {},
-  handleClearReg: () => {}
+  selectedStart: false,
+  error: null
 });
 
 export default LandingContext;
 
 export class LandingProvider extends Component {
   state = {
-    loggedIn: UserService.hasAccount(),
-    registered: UserService.hasAccount(),
+    selectedStart: false,
     error: null
   };
 
-  saveUsername = (username) => {
-    this.setState({username})
+  setSelectedStart = () => {
+    this.setState({ selectedStart: true });
   };
 
-  handleLoginState = (isLoggedIn) => {
-    this.setState({
-      loggedIn: isLoggedIn
-    });
+  clearSelectedStart = () => {
+    this.setState({ selectedStart: false });
   };
 
-  handleRegistering = (isRegistering) => {
-    this.setState({
-      isRegistering: true
-    });
+  setError = (error) => {
+    console.error(error);
+    this.setState({ error });
   };
 
-  handleLoggingIn = (loggingIn) => {
-    this.setState({
-      loggingIn: true
-    });
-  };
-
-  handleClearLog = (loggingIn) => {
-    this.setState({
-      loggingIn: false
-    });
-  };
-
-  handleClearReg = (isRegistering) => {
-    this.setState({
-      isRegistering: false
-    });
+  clearError = () => {
+    this.setState({ error: null });
   };
 
   render() {
     const value = {
-      username: this.state.username,
-      loggedIn: this.state.loggedIn,
-      isRegistering: this.state.isRegistering,
+      topicsList: this.state.topicsList,
       error: this.state.error,
-      loggingIn: this.state.loggingIn,
-      saveUsername: this.saveUsername,
-      handleLoginState: this.handleLoginState,
-      handleRegistering: this.handleRegistering,
-      handleLoggingIn: this.handleLoggingIn,
-      handleClearLog: this.handleClearLog,
-      handleClearReg: this.handleClearReg,
     };
 
-    return (
-      <LandingContext.Provider value={value}>
-        {this.props.children}
-      </LandingContext.Provider>
-    );
-  }
+  return (
+    <LandingContext.Provider value={value}>
+      {this.props.children}
+    </LandingContext.Provider>
+  )
+}
 }

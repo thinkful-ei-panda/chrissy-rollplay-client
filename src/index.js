@@ -5,7 +5,6 @@ import { TopicsListProvider } from './contexts/TopicsContext';
 import { LandingProvider } from './contexts/LandingContext';
 import './index.css';
 import App from './App';
-import Landing from './components/Landing/Landing';
 
 
 ReactDOM.render(
