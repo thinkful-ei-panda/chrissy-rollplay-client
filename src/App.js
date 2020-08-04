@@ -1,42 +1,25 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import Landing from './components/Landing/Landing.js';
-import NewNav from './components/NewNav/NewNav.js';
+import React from 'react';
+import {Route} from 'react-router-dom';
+import PrivateRoute from './utils/private-route';
+import PublicRoute from './utils/public-route';
+import Landing from './components/Landing/Landing';
 import DetailedTopic from './components/DetailedTopic/DetailedTopic.js';
 import TopicsList from './components/TopicsList/TopicsList.js';
-// import './app.css';
 
 class App extends React.Component {
   render() {
     return (
       <>
-        <main class="content-wrapper">
-          <Landing />
+        <main className="content-wrapper">
+          <PrivateRoute exact path='/topics' component={TopicsList} />
+
+          <PrivateRoute path='/topics/:id' component={DetailedTopic} />
+
+          <PublicRoute exact path='/' component={Landing} />
         </main>
       </>
     )
   }
 }
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;

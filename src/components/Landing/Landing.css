@@ -6,6 +6,10 @@
   width: auto;
 }
 
+.login-element {
+  text-decoration: none
+}
+
 .registration, .existing-user {
   display: flex;
   margin: auto;

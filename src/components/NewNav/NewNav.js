@@ -8,11 +8,11 @@ class NewNavigation extends React.Component {
       <>
       <nav className="nav-bar">
         <div className="nav-logo-box">
-          <img src={rollplayblack} alt="logo" class="nav-logo"/>
+          <img src={rollplayblack} alt="logo" className="nav-logo"/>
         </div>
-        <div class="user-display">
+        <div className="user-display">
           <p>Hi, Username!</p>
-          <button type="button" role="logout" class="nav-button logout">Log Out</button>
+          <button type="button" className="nav-button logout">Log Out</button>
         </div>
       </nav>
       </>

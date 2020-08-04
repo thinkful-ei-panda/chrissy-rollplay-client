@@ -1,13 +1,13 @@
 import config from '../config';
 
 const AuthApiService = {
-  postLogin(credentials) {
-    return fetch(`${config.API_ENDPOINT}/auth/login`, {
+  postLogin(username, password) {
+    return fetch(`${config.API_ENDPOINT}/login`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(username, password)
     })
       .then(res =>
         (!res.ok)
@@ -15,20 +15,22 @@ const AuthApiService = {
         :res.json()
         )
   },
-
-  postUser(user) {
-    return fetch(`${config.API_ENDPOINT}/user`, {
+  registerUser(newUsername, newPassword) {
+    return fetch(`${config.API_ENDPOINT}/register`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
-      body: JSON.stringify(user),
+      body: JSON.stringify({
+        username: newUsername,
+        password: newPassword
+      }),
     })
-    .then(res =>
-      (!res.ok)
-      ? res.json().then(e=> Promise.reject(e))
-      : res.json()
-      )
+      .then(res =>
+        (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+        )
   }
 }
 
