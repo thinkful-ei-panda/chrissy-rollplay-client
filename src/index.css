@@ -5,8 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: grey;
-  background-repeat: repeat-x;
+  background-color: #fffef1;
+  background-color: #ceeacc;
+  background-image: url("./components/img/topography.svg");
   font-family: Helvetica, Arial, Sans-Serif;
   font-size: 15px;
 }

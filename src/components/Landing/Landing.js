@@ -11,17 +11,8 @@ class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedStart: false,
       addingTopic: false
     }
-  }
-
-  handleStartClicked = () => {
-    this.setState({selectedStart : true})
-  }
-
-  handleLogOutClicked = () => {
-    this.setState({selectedStart : false})
   }
 
   handleAddTopicClicked = () => {
@@ -33,19 +24,20 @@ class Landing extends React.Component {
   }
 
   renderPages() {
-    const { selectedStart, addingTopic } = this.state;
+    const { selectedStart ,setSelectedStart, clearSelectedStart } = this.context;
+    const { addingTopic } = this.state;
 
     if (selectedStart === false) {
       return (
         <div className="start-button">
-          <button type="button" onClick={this.handleStartClicked}>Let's Get Started</button>
+          <button type="button" onClick={setSelectedStart}>Let's Get Started</button>
         </div>
       )
     } else if (selectedStart === true && addingTopic === false) {
       return (
         <>
           <div className="logout-button">
-            <button type="button" onClick={this.handleLogOutClicked}>Bye bye!</button>
+            <button type="button" onClick={clearSelectedStart}>Bye bye!</button>
           </div>
           <section className="addTopicSection">
             <button type="button" onClick={this.handleAddTopicClicked}>New Topic</button>

@@ -1,4 +1,3 @@
-// import TokenService from './token-service.js';
 import config from '../config';
 
 const ApiService = {
@@ -24,18 +23,54 @@ const ApiService = {
           : res.json()
       )
   },
-  postTopic(topicId, userId, topicSystem, topicDesc) {
-    return fetch(`${config.API_ENDPOINT}/topics`, {
+  postTopic( title, topic_owner, rpg_system, topic_desc, topic_passphrase) {
+    console.log(title, topic_owner, rpg_system, topic_desc, topic_passphrase)
+    return fetch(`${config.API_ENDPOINT}topics/topics`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        topic_id: topicId,
-        topic_owner: userId,
-        rpg_system: topicSystem,
-        topic_desc: topicDesc
+        title: title,
+        topic_owner: topic_owner,
+        rpg_system: rpg_system,
+        topic_desc: topic_desc,
+        topic_passphrase: topic_passphrase
       }),
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+  editTopic(topic_id, title, topic_desc, rpg_system ) {
+    console.log(topic_id)
+    return fetch(`${config.API_ENDPOINT}topics/${topic_id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        topic_id: topic_id,
+        title: title,
+        topic_desc: topic_desc,
+        rpg_system: rpg_system
+      }),
+    })
+    .then(res =>
+      (!res.ok)
+      ? res.json().then(e => Promise.reject(e))
+      : res.json({message:'Topic edited'})
+      )
+  },
+  deleteTopic(topic_id) {
+    console.log(topic_id)
+    return fetch(`${config.API_ENDPOINT}topics/${topic_id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
     })
       .then(res =>
         (!res.ok)
@@ -44,7 +79,8 @@ const ApiService = {
       )
   },
   getComments(topicId) {
-    return fetch(`${config.API_ENDPOINT}/topics/${topicId}/comments`, {
+    console.log(topicId);
+    return fetch(`${config.API_ENDPOINT}comments/${topicId}`, {
       headers: {
       },
     })
@@ -54,18 +90,30 @@ const ApiService = {
           : res.json()
       )
   },
-  postComment(commentId, userId, topicId, commentDesc) {
-    return fetch(`${config.API_ENDPOINT}/topics/${topicId}`, {
+  postComment(commentOwner, commentPassphrase, commentDesc, commentThread) {
+    console.log('postComment fired');
+    return fetch(`${config.API_ENDPOINT}comments/${commentThread}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        comment_id: commentId,
-        comment_owner: userId,
-        comment_thread: topicId,
-        comment_desc: commentDesc
+        comment_owner: commentOwner,
+        comment_passphrase: commentPassphrase,
+        comment_desc: commentDesc,
+        comment_thread: commentThread
       }),
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+  deleteComment(comment_id) {
+    console.log(comment_id, 'delete comment fired')
+    return fetch(`${config.API_ENDPOINT}comments/${comment_id}`, {
+      method: 'DELETE',
     })
       .then(res =>
         (!res.ok)

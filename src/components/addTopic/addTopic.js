@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import ApiService from '../../services/api-service';
+import TopicsListContext from '../../contexts/TopicsContext';
 
 class AddTopic extends Component {
+  static contextType = TopicsListContext;
+
   constructor(props) {
     super(props);
     this.state = {
       title: '',
-      system: '',
-      username: '',
-      passphrase: '',
-      description: ''
+      topic_owner: '',
+      rpg_system: '',
+      topic_desc: '',
+      topic_passphrase: ''
     };
   };
 
@@ -18,16 +22,25 @@ class AddTopic extends Component {
     this.setState({[nam]: val})
   }
 
+  handleSubmitNewTopic = (event) => {
+    const { title, topic_owner, rpg_system, topic_desc, topic_passphrase } = this.state;
+    const { goBack } = this.props;
+    event.preventDefault();
+    ApiService.postTopic(title, topic_owner, rpg_system, topic_desc, topic_passphrase)
+      .catch(this.context.setError)
+      .then(goBack)
+  };
+
   render() {
     const { goBack } = this.props;
     return (
       <section className="adding-topic">
-        <form className="add-topic-form" onSubmit={this.handleSubmit}>
+        <form className="add-topic-form" onSubmit={this.handleSubmitNewTopic}>
           <input type="text" name="title" onChange={this.handleChange} />
-          <input type="text" name="system" onChange={this.handleChange} />
-          <input type="text" name="username" onChange={this.handleChange} />
-          <input type="text" name="passphrase" onChange={this.handleChange} />
-          <textarea name="description" onChange={this.handleChange} />
+          <input type="text" name="topic_owner" onChange={this.handleChange} />
+          <input type="text" name="rpg_system" onChange={this.handleChange} />
+          <input type="text" name="topic_passphrase" onChange={this.handleChange} />
+          <textarea name="topic_desc" onChange={this.handleChange} />
           <button type="submit">Create New Topic</button>
           <button type="button" onClick={goBack}>Go Back</button>
         </form>

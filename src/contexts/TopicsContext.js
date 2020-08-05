@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 const TopicsListContext = React.createContext({
   topicsList: [],
-  newTopic: false,
+  newTopic: {},
   topicDetail: false,
-  // currentTopic: '',
-  topicContent: {},
+  topicContent: [],
+  selectedStart: false,
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -13,8 +13,6 @@ const TopicsListContext = React.createContext({
   clearTopicsList: () => {},
   setTopicDetail: () => {},
   clearTopicDetail: () => {},
-  // setCurrentTopic: () => {},
-  // clearCurrentTopic: () => {},
   setTopicContent: () => {},
   clearTopicContent: () => {}
 });
@@ -24,9 +22,10 @@ export default TopicsListContext;
 export class TopicsListProvider extends Component {
   state = {
     topicsList: [],
+    newTopic: {},
     topicDetail: false,
-    // currentTopic: '',
-    topicContent: {},
+    topicContent: [],
+    selectedStart: false,
     error: null
   };
 
@@ -55,22 +54,28 @@ export class TopicsListProvider extends Component {
     this.setState({ topicDetail: false });
   };
 
-  // setCurrentTopic = (currentTopic) => {
-  //   this.setState({ currentTopic });
-  //   console.log(currentTopic);
-  // };
-
-  // clearCurrentTopic = () => {
-  //   this.setState({ currentTopic: null });
-  // };
-
   setTopicContent = (topicContent) => {
-    this.setState({ topicContent });
-    console.log(topicContent);
+    this.setState({ topicContent })
   };
 
   clearTopicContent = () => {
-    this.setState({ topicContent: [] });
+    this.setState({ topicContent: {} })
+  };
+
+  setSelectedStart = () => {
+    this.setState({ selectedStart: true });
+  };
+
+  clearSelectedStart = () => {
+    this.setState({ selectedStart: false });
+  };
+
+  setNewTopic = (newTopic) => {
+    this.setState({ newTopic });
+  };
+
+  clearNewTopic = () => {
+    this.setState({ newTopic: {} });
   };
 
   render() {
@@ -80,17 +85,19 @@ export class TopicsListProvider extends Component {
       error: this.state.error,
       topicDetail: this.state.topicDetail,
       topicContent: this.state.topicContent,
-      // currentTopic: this.state.currentTopic,
+      selectedStart: this.state.selectedStart,
       setTopicsList: this.setTopicsList,
       clearTopicsList: this.clearTopicsList,
       setError: this.setError,
       clearError: this.clearError,
       setTopicDetail: this.setTopicDetail,
       clearTopicDetail: this.clearTopicDetail,
-      // setCurrentTopic: this.setCurrentTopic,
-      // clearCurrentTopic: this.clearCurrentTopic,
+      setSelectedStart: this.setSelectedStart,
+      clearSelectedStart: this.clearSelectedStart,
+      setNewTopic: this.setNewTopic,
+      clearNewTopic: this.clearNewTopic,
       setTopicContent: this.setTopicContent,
-      clearTopicContent: this.clearTopicContent
+      clearTopicContent: this.clearNewTopic
     };
     return (
       <TopicsListContext.Provider value={value}>

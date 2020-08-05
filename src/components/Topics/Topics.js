@@ -11,13 +11,6 @@ class Topics extends React.Component {
     }
   }
 
-  // handleDetailsClick = (id) => {
-  //   console.log(id)
-  //   this.context.setCurrentTopic(id)
-  // }
-
-  // onClick={() => this.handleDetailsClick(this.props.id)}
-
   render = () => {
     const { id, title, system, date, owner } = this.props;
 
@@ -27,7 +20,11 @@ class Topics extends React.Component {
         <h3>{system}</h3>
         <h4>{owner}</h4>
         <p>{date}</p>
-        <Link to={`/topics/${id}`}>Details</Link>
+        <Link to={`/topics/${id}`}>
+          <button>
+            Details
+          </button>
+        </Link>
       </li>
     )
   }

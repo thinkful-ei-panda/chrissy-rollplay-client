@@ -1,9 +1,8 @@
 import React from 'react';
 import Topics from '../Topics/Topics.js';
-import DetailedTopic from '../DetailedTopic/DetailedTopic';
 import ApiService from '../../services/api-service.js';
-import './TopicsList.css';
 import TopicsListContext from '../../contexts/TopicsContext.js';
+import './TopicsList.css';
 
 class TopicsList extends React.Component {
   static contextType = TopicsListContext;
@@ -21,6 +20,7 @@ class TopicsList extends React.Component {
     const { topicsList = [] } = this.context;
     return topicsList.map(topic =>
       <Topics
+        key={topic.topic_id}
         id={topic.topic_id}
         title={topic.title}
         system={topic.rpg_system}
