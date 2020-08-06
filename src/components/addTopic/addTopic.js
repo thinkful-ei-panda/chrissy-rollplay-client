@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ApiService from '../../services/api-service';
 import TopicsListContext from '../../contexts/TopicsContext';
+import './addTopic.css';
 
 class AddTopic extends Component {
   static contextType = TopicsListContext;
@@ -12,7 +13,7 @@ class AddTopic extends Component {
       topic_owner: '',
       rpg_system: '',
       topic_desc: '',
-      topic_passphrase: ''
+      topic_passphrase: 'placeholder'
     };
   };
 
@@ -36,11 +37,10 @@ class AddTopic extends Component {
     return (
       <section className="adding-topic">
         <form className="add-topic-form" onSubmit={this.handleSubmitNewTopic}>
-          <input type="text" name="title" onChange={this.handleChange} />
-          <input type="text" name="topic_owner" onChange={this.handleChange} />
-          <input type="text" name="rpg_system" onChange={this.handleChange} />
-          <input type="text" name="topic_passphrase" onChange={this.handleChange} />
-          <textarea name="topic_desc" onChange={this.handleChange} />
+          <input type="text" name="title" placeholder="Enter subject" onChange={this.handleChange} />
+          <input type="text" name="topic_owner" placeholder="What's your name?" onChange={this.handleChange} />
+          <input type="text" name="rpg_system" placeholder="Enter system e.g. Pathfinder" onChange={this.handleChange} />
+          <textarea name="topic_desc" onChange={this.handleChange} placeholder="Description" />
           <button type="submit">Create New Topic</button>
           <button type="button" onClick={goBack}>Go Back</button>
         </form>

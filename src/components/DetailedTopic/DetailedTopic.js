@@ -13,9 +13,7 @@ class DetailedTopic extends React.Component {
     super(props);
     this.state = {
       commenting: false,
-      editingTopic: false,
-      editingComment: false,
-
+      editingTopic: false
     }
   };
 
@@ -33,14 +31,6 @@ class DetailedTopic extends React.Component {
 
   handleCancelEditTopic = () => {
     this.setState({editingTopic: false})
-  };
-
-  handleEditComment = () => {
-    this.setState({editingComment: true})
-  };
-
-  handleCancelEditComment = () => {
-    this.setState({editingComment: false})
   };
 
   componentDidMount() {
@@ -71,13 +61,13 @@ class DetailedTopic extends React.Component {
 
   render() {
     const { topicContent = {}, setSelectedStart } = this.context;
-    const { commenting, editingTopic, editingComment } = this.state;
+    const { commenting, editingTopic } = this.state;
     const topic_id = this.props.match.params.id;
     console.log(topic_id)
-      if (commenting === true && editingTopic === false && editingComment === false) {
+      if (commenting === true && editingTopic === false) {
         console.log('commenting true')
         return (
-          <>
+          <section class="detailed-topic-box">
             <section className="detailedTopic">
               <li key="" className="ticket">
                 <h2>{topicContent.title}</h2>
@@ -93,21 +83,19 @@ class DetailedTopic extends React.Component {
             <section className="commentsBox">
               <CommentsList id={this.props.match.params.id} />
             </section>
-          </>
+          </section>
       )
-    } else if (commenting === false && editingTopic === true && editingComment === false) {
+    } else if (commenting === false && editingTopic === true) {
       console.log('editing true')
       return (
-        <EditTopic cancelEdit={this.handleCancelEditTopic} topicId={this.props.match.params.id} />
+        <section className="detailed-topic-box">
+          <EditTopic cancelEdit={this.handleCancelEditTopic} topicId={this.props.match.params.id} />
+        </section>
       )
-    // } else if (commenting === false && editingTopic === false && editingComment === true) {
-    //   return (
-
-    //   )
     } else {
       console.log('normal view')
       return (
-        <> 
+        <section className="detailed-topic-box"> 
           <li key="" className="ticket">
             <h2>{topicContent.title}</h2>
             <h3>{topicContent.rpg_system}</h3>
@@ -117,9 +105,6 @@ class DetailedTopic extends React.Component {
             <button type="button" onClick={this.handleAddComment}>Add Comment</button>
             <button type="button" onClick={this.handleEditTopic}>Edit</button>
             <Link to={`/`}>
-              <button type="button" onClick={this.handleDeleteTopic}>Delete Topic</button>
-            </Link>
-            <Link to={`/`}>
               <button type="button" onClick={setSelectedStart}>
                 Back
               </button>
@@ -128,7 +113,7 @@ class DetailedTopic extends React.Component {
           <section className="commentsBox">
             <CommentsList id={this.props.match.params.id} />
           </section>
-        </>          
+        </section>          
     )
   }
 }

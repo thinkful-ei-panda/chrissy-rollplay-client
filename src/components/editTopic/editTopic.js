@@ -42,9 +42,9 @@ class EditTopic extends Component {
     return (
       <section className="editing-topic">
         <form className="edit-topic-form" onSubmit={this.handleSubmitEditTopic}>
-          <input type="text" name="title" onChange={this.handleChange} />
-          <input type="text" name="rpg_system" onChange={this.handleChange} />
-          <textarea name="topic_desc" onChange={this.handleChange} />
+          <input type="text" name="title" onChange={this.handleChange} placeholder="New Title" />
+          <input type="text" name="rpg_system" onChange={this.handleChange} placeholder="New System" />
+          <textarea name="topic_desc" onChange={this.handleChange} placeholder="New Description" />
           <button type="submit">Submit</button>
           <button type="button" onClick={cancelEdit}>Go Back</button>
         </form>

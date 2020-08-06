@@ -1,5 +1,6 @@
 import React from 'react';
 import rollplayblack from '../img/rollplayblack.png';
+import dungeonmistress from '../pixelPortraits/dungeonmistress.png';
 import TopicsList from '../TopicsList/TopicsList';
 import TopicsListContext from '../../contexts/TopicsContext';
 import AddTopic from '../addTopic/addTopic';
@@ -29,20 +30,25 @@ class Landing extends React.Component {
 
     if (selectedStart === false) {
       return (
-        <div className="start-button">
-          <button type="button" onClick={setSelectedStart}>Let's Get Started</button>
-        </div>
+        <section>
+          <div className="welcome-message">
+            <h2>This app is intended to be a helpful tool for connecting players, new and old, to the world of table-top roleplaying. Ask questions, create discussions, and help solve problems all on one simple platform!</h2>
+          </div>
+          <div className="start-button">
+            <button type="button" onClick={setSelectedStart}>Let's Get Started</button>
+          </div>
+        </section>
       )
     } else if (selectedStart === true && addingTopic === false) {
       return (
         <>
-          <div className="logout-button">
+          <section className="landing-buttons">
             <button type="button" onClick={clearSelectedStart}>Bye bye!</button>
-          </div>
-          <section className="addTopicSection">
             <button type="button" onClick={this.handleAddTopicClicked}>New Topic</button>
           </section>
-          <TopicsList />
+          <section className="topics-list">
+            <TopicsList />
+          </section>
         </>
       ) 
     } else if (selectedStart === true && addingTopic === true) {
@@ -60,6 +66,12 @@ class Landing extends React.Component {
       <main className="landing">
         <div className="landing-logo-box">
           <img src={rollplayblack} alt="logo" className="logo" />
+        </div>
+        <div className="dungeonmistress">
+          <img src={dungeonmistress} alt="dungeonmistress" className="dungeon-mistress"/>
+          <div className="typewriter">
+              <h1>Welcome, adventurer!</h1>
+            </div>
         </div>
         <section>
           {this.renderPages()}

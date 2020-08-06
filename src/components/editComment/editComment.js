@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import ApiService from '../../services/api-service';
 import TopicsListContext from '../../contexts/TopicsContext';
 
-class AddComment extends Component {
+class EditComment extends Component {
   static contextType = TopicsListContext;
 
   constructor(props) {
     super(props);
     this.state = {
-      comment_owner: '',
-      comment_passphrase: '',
       comment_desc: ''
     };
   };
@@ -20,29 +18,28 @@ class AddComment extends Component {
     this.setState({[nam]: val})
   }
 
-  handleSubmitNewComment = (event) => {
-    const { comment_owner, comment_passphrase, comment_desc } = this.state;
-    const { topicId, handleCancelComment } = this.props;
+  handleSubmitEditComment = (event) => {
+    const { comment_desc } = this.state;
+    const { comment_id, cancelEdit } = this.props;
     event.preventDefault();
-    ApiService.postComment(comment_owner, comment_passphrase, comment_desc, topicId)
-      .catch(this.context.setError)
-      .then(handleCancelComment)
+    cancelEdit();
+    ApiService.editComment(comment_id, comment_desc)
+      .then(this.context.setTopicContent)
+      .catch(error => {this.context.setError(error)})
   };
 
   render() {
-    const { handleCancelComment } = this.props;
+    const { cancelEdit } = this.props;
     return (
-      <section className="add-comment">
-        <form name="add-comment" onSubmit={this.handleSubmitNewComment}>
-        <input type="text" name="comment_owner" onChange={this.handleChange} />
-        <input type="text" name="comment_passphrase" onChange={this.handleChange} />
-        <textarea name="comment_desc" onChange={this.handleChange} />
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleCancelComment}>Cancel</button>
+      <section className="editing-topic">
+        <form className="edit-topic-form" onSubmit={this.handleSubmitEditComment}>
+          <textarea name="comment_desc" onChange={this.handleChange} />
+          <button type="submit">Submit</button>
+          <button type="button" onClick={cancelEdit}>Go Back</button>
         </form>
       </section>
     )
   }
 }
 
-export default AddComment;
+export default EditComment;

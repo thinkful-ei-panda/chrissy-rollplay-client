@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ApiService from '../../services/api-service';
 import TopicsListContext from '../../contexts/TopicsContext';
+import './addComment.css';
 
 class AddComment extends Component {
   static contextType = TopicsListContext;
@@ -33,12 +34,11 @@ class AddComment extends Component {
     const { handleCancelComment } = this.props;
     return (
       <section className="add-comment">
-        <form name="add-comment" onSubmit={this.handleSubmitNewComment}>
-        <input type="text" name="comment_owner" onChange={this.handleChange} />
-        <input type="text" name="comment_passphrase" onChange={this.handleChange} />
-        <textarea name="comment_desc" onChange={this.handleChange} />
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleCancelComment}>Cancel</button>
+        <form name="add-comment-form" onSubmit={this.handleSubmitNewComment}>
+          <input type="text" name="comment_owner" onChange={this.handleChange} Placeholder="What's your name?" />
+          <textarea name="comment_desc" onChange={this.handleChange} placeholder="Comment Description" />
+          <button type="submit">Submit</button>
+          <button type="button" onClick={handleCancelComment}>Cancel</button>
         </form>
       </section>
     )

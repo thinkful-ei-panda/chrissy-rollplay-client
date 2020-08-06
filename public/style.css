@@ -1,0 +1,86 @@
+#root {
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  min-width: 320px;
+  min-height: 320px;
+}
+
+.landing, .detailed-topic-box {
+  padding-top: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 0 #666;
+  box-shadow: 5px 5px 0 #666;
+}
+
+.content-wrapper section {
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.add-topic-form, .edit-topic-form, .add-comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.dungeon-mistress {
+  height: 12%;
+  width: 12%;
+  -webkit-box-shadow: 5px 5px 0 #666;
+  box-shadow: 5px 5px 0 #666;
+}
+
+.landing-logo-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  list-style-type: none;
+  text-align: center;
+}
+
+button {
+  color: black;
+  font-family: Helvetica, Arial, Sans-Serif;
+  font-size: 20px;
+  text-decoration: none;
+  text-shadow: -1px -1px 1px #616161;
+  position: relative;
+  -webkit-box-shadow: 5px 5px 0 #666;
+  box-shadow: 5px 5px 0 #666;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  margin: 0 10px 0 0;
+}
+
+button:hover {
+  -webkit-box-shadow: 0px 0px 0 #666;
+  box-shadow: 0px 0px 0 #666;
+  top: 5px;
+  left: 5px;
+}
+
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid transparent; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end);
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}

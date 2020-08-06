@@ -58,10 +58,7 @@ const ApiService = {
         rpg_system: rpg_system
       }),
     })
-    .then(res =>
-      (!res.ok)
-      ? res.json().then(e => Promise.reject(e))
-      : res.json({message:'Topic edited'})
+    .then(res => res.json
       )
   },
   deleteTopic(topic_id) {
@@ -72,11 +69,6 @@ const ApiService = {
         'content-type': 'application/json',
       },
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
   },
   getComments(topicId) {
     console.log(topicId);
@@ -110,16 +102,24 @@ const ApiService = {
           : res.json()
       )
   },
+  editComment(comment_id, comment_desc) {
+    console.log(comment_id)
+    return fetch(`${config.API_ENDPOINT}comments/${comment_id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        comment_id: comment_id,
+        comment_desc: comment_desc
+      }),
+    })
+  },
   deleteComment(comment_id) {
     console.log(comment_id, 'delete comment fired')
     return fetch(`${config.API_ENDPOINT}comments/${comment_id}`, {
       method: 'DELETE',
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
   },
 }
 

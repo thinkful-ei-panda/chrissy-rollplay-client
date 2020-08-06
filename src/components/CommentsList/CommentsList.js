@@ -18,7 +18,7 @@ class CommentsList extends React.Component {
 
   render() {
     const { commentsList = [] } = this.context;
-    const { id } = this.props;
+    const { id, editComment } = this.props;
     return commentsList.map(comment =>
           <Comments 
             key={comment.comment_id}

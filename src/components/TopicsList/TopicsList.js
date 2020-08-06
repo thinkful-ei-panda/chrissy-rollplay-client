@@ -7,17 +7,17 @@ import './TopicsList.css';
 class TopicsList extends React.Component {
   static contextType = TopicsListContext;
 
-
-
   componentDidMount() {
     this.context.clearError()
     ApiService.getTopics()
       .then(this.context.setTopicsList)
+      .then(console.log(this.context.TopicsList))
       .catch(this.context.setError)
   }
 
   render() {
     const { topicsList = [] } = this.context;
+    console.log(this.changeImage);
     return topicsList.map(topic =>
       <Topics
         key={topic.topic_id}

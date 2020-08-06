@@ -39,6 +39,7 @@ export class TopicsListProvider extends Component {
   };
 
   setTopicsList = (topicsList) => {
+    console.log(topicsList)
     this.setState({ topicsList });
   };
 

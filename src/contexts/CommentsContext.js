@@ -4,6 +4,10 @@ const CommentsContext = React.createContext({
   commentsList: [],
   setCommentsList: () => {},
   clearCommentsList: () => {},
+  setEditComment: () => {},
+  clearEditComment: () => {},
+  setEditCommentId: () => {},
+  clearEditCommentId: () => {},
   setError: () => {},
   clearError: () => {}
 });
@@ -12,7 +16,9 @@ export default CommentsContext;
 
 export class CommentsContextProvider extends Component {
   state = {
-    commentsList: []
+    commentsList: [],
+    editComment: false,
+    editCommentId: ''
   };
 
   setCommentsList = (commentsList) => {
@@ -22,6 +28,22 @@ export class CommentsContextProvider extends Component {
 
   clearCommentsList = () => {
     this.setState({ commentsList: [] });
+  };
+
+  setEditCommentId = (comment_id) => {
+    this.setState({ editCommentId: comment_id })
+  };
+
+  clearEditCommentId = () => {
+    this.setState({ editCommentId: '' })
+  };
+
+  setEditComment = () => {
+    this.setState({editComment: true})
+  };
+
+  clearEditComment = () => {
+    this.setState({editComment: false})
   };
 
   setError = (error) => {
@@ -35,9 +57,15 @@ export class CommentsContextProvider extends Component {
   render() {
     const value = {
       commentsList: this.state.commentsList,
+      editComment: this.state.editComment,
+      editCommentId: this.state.editCommentId,
       error: this.state.error,
       setCommentsList: this.setCommentsList,
       clearCommentsList: this.clearCommentsList,
+      setEditComment: this.setEditComment,
+      clearEditComment: this.clearEditComment,
+      setEditCommentId: this.setEditCommentId,
+      clearEditCommentId: this.clearEditCommentId,
       setError: this.setError,
       clearError: this.clearError
     };
