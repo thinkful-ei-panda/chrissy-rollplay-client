@@ -58,10 +58,7 @@ const ApiService = {
         rpg_system: rpg_system
       }),
     })
-    .then(res =>
-      (!res.ok)
-      ? res.json().then(e => Promise.reject(e))
-      : res.json({message:'Topic edited'})
+    .then(res => res.json
       )
   },
   deleteTopic(topic_id) {

@@ -1,0 +1,22 @@
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  min-width: 320px;
+  min-height: 320px;
+}
+
+.landing {
+	padding-top: 2rem;
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 10px;
+}
+
+.content-wrapper section {
+	margin: 2rem;
+	padding: 2rem;
+}
