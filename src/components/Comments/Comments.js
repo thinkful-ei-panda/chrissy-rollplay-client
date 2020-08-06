@@ -7,16 +7,16 @@ class Comments extends React.Component {
   static contextType = CommentsContext;
 
   handleDeleteComment = (event) => {
-    const { id } = this.props;
+    const { id, topic_id } = this.props;
     event.preventDefault();
     ApiService.deleteComment(id)
-      .then(ApiService.getComments(id)
+      .then(data => ApiService.getComments(topic_id)
         .then(comments => this.context.setCommentsList(comments))
       )
       .catch(error => this.context.setError(error)
       )
     }
-
+    
   render() {
     const { id, desc, date, thread, owner } = this.props;
     return (

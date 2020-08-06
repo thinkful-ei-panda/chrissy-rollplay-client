@@ -8,8 +8,11 @@
 
 .content-wrapper {
   max-width: 1000px;
-  min-width: 320px;
   min-height: 320px;
+}
+
+.landing-logo-box {
+  margin: 0 auto;
 }
 
 .landing, .detailed-topic-box {
@@ -72,7 +75,7 @@ button:hover {
 .typewriter h1 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid transparent; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
+  white-space: normal; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .15em; /* Adjust as needed */
   animation: 
@@ -83,4 +86,24 @@ button:hover {
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
+}
+
+@media(max-width: 600px){
+  .landing-logo-box img {
+    width: 200px;
+  }
+  .typewriter h1 {
+    font-size: 1rem;
+  }
+  h2 {
+    font-size: 0.85rem;
+  }
+  .content-wrapper section {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  button {
+    font-size: 1rem;
+  }
 }

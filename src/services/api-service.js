@@ -82,6 +82,17 @@ const ApiService = {
           : res.json()
       )
   },
+  getAllComments() {
+    return fetch(`${config.API_ENDPOINT}comments/comments`, {
+      headers: {
+      },
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
   postComment(commentOwner, commentPassphrase, commentDesc, commentThread) {
     console.log('postComment fired');
     return fetch(`${config.API_ENDPOINT}comments/${commentThread}`, {
