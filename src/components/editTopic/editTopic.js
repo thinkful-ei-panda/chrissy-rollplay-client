@@ -32,9 +32,9 @@ class EditTopic extends Component {
           rpg_system : rpg_system
         })
         )
-      .catch(error => {
-        debugger;
-        this.context.setError(error)})
+      .catch(error => (
+        this.context.setError(error)
+      ))
   };
 
   render() {
