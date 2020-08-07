@@ -47,6 +47,7 @@ class Landing extends React.Component {
             <button type="button" onClick={this.handleAddTopicClicked}>New Topic</button>
           </section>
           <section className="topics-list">
+            <h2 className="header-text">Topics</h2>
             <TopicsList />
           </section>
         </>
@@ -55,6 +56,7 @@ class Landing extends React.Component {
       console.log('got to add topic')
       return (
         <section className="addTopicSection">
+          <h2 className="header-text">Create your new topic!</h2>
           <AddTopic goBack={this.handleGoBackClicked} />
         </section>
       )

@@ -18,13 +18,11 @@ class Comments extends React.Component {
     }
     
   render() {
-    const { id, desc, date, thread, owner } = this.props;
+    const { id, desc, date, owner } = this.props;
     return (
         <li key={id} className="comment">
-          <p>{id}</p>
-          <h2>{owner}</h2>
-          <h3>{date}</h3>
-          <h4>{thread}</h4>
+          <h2>User: {owner}</h2>
+          <h3>Date created: {date}</h3>
           <p>{desc}</p>
           <button type="button" onClick={this.handleDeleteComment}>Delete</button>
         </li>

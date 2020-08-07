@@ -70,10 +70,10 @@ class DetailedTopic extends React.Component {
           <section class="detailed-topic-box">
             <section className="detailedTopic">
               <li key="" className="ticket">
-                <h2>{topicContent.title}</h2>
-                <h3>{topicContent.rpg_system}</h3>
-                <h4>{topicContent.topic_owner}</h4>
-                <p>{topicContent.topic_date}</p>
+                <h1>Title: {topicContent.title}</h1>
+                <h3>User: {topicContent.topic_owner}</h3>
+                <h4>RPG System: {topicContent.rpg_system}</h4>
+                <p>Date created:{topicContent.topic_date}</p>
                 <p>{topicContent.topic_desc}</p>
               </li>
             </section>
@@ -97,10 +97,10 @@ class DetailedTopic extends React.Component {
       return (
         <section className="detailed-topic-box"> 
           <li key="" className="ticket">
-            <h2>{topicContent.title}</h2>
-            <h3>{topicContent.rpg_system}</h3>
-            <h4>{topicContent.topic_owner}</h4>
-            <p>{topicContent.topic_date}</p>
+            <h1>Title: {topicContent.title}</h1>
+            <h3>User: {topicContent.topic_owner}</h3>
+            <h4>RPG System: {topicContent.rpg_system}</h4>
+            <p>Date created:{topicContent.topic_date}</p>
             <p>{topicContent.topic_desc}</p>
             <button type="button" onClick={this.handleAddComment}>Add Comment</button>
             <button type="button" onClick={this.handleEditTopic}>Edit</button>

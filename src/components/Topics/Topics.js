@@ -32,11 +32,11 @@ class Topics extends React.Component {
   render = () => {
     const { id, title, system, date, owner } = this.props;
     return (
-      <li key={id} className="ticket">
-        <h2>{title}</h2>
-        <h3>{system}</h3>
-        <h4>{owner}</h4>
-        <p>{date}</p>
+      <li key={id} className="ticket box effect5">
+        <h2>User: {owner}</h2>
+        <h3>Title: {title}</h3>
+        <h4>RPG System: {system}</h4>
+        <p>Date created:{date}</p>
         <Link to={`/topics/${id}`}>
           <button>
             Details
