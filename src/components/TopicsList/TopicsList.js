@@ -10,7 +10,6 @@ class TopicsList extends React.Component {
     this.context.clearError()
     ApiService.getTopics()
       .then(this.context.setTopicsList)
-      .then(console.log(this.context.TopicsList))
       .catch(this.context.setError)
   }
 

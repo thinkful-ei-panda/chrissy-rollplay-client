@@ -52,7 +52,6 @@ class Landing extends React.Component {
         </>
       ) 
     } else if (selectedStart === true && addingTopic === true) {
-      console.log('got to add topic')
       return (
         <section className="addTopicSection">
           <h2 className="header-text">Create your new topic!</h2>
