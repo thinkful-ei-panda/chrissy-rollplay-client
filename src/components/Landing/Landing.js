@@ -4,7 +4,6 @@ import dungeonmistress from '../pixelPortraits/dungeonmistress.png';
 import TopicsList from '../TopicsList/TopicsList';
 import TopicsListContext from '../../contexts/TopicsContext';
 import AddTopic from '../addTopic/addTopic';
-import './Landing.css';
 
 class Landing extends React.Component {
   static contextType = TopicsListContext;

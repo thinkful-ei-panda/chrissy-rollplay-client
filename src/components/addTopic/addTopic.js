@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ApiService from '../../services/api-service';
 import TopicsListContext from '../../contexts/TopicsContext';
-import './addTopic.css';
 
 class AddTopic extends Component {
   static contextType = TopicsListContext;
@@ -17,12 +16,14 @@ class AddTopic extends Component {
     };
   };
 
+  //Fills state with text in inputs/textarea
   handleChange = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
     this.setState({[nam]: val})
   }
 
+  //Submits the contents of the inputs/textarea and submits them via ApiService.postTopic
   handleSubmitNewTopic = (event) => {
     const { title, topic_owner, rpg_system, topic_desc, topic_passphrase } = this.state;
     const { goBack } = this.props;

@@ -2,7 +2,6 @@ import React from 'react';
 import Topics from '../Topics/Topics.js';
 import ApiService from '../../services/api-service.js';
 import TopicsListContext from '../../contexts/TopicsContext.js';
-import './TopicsList.css';
 
 class TopicsList extends React.Component {
   static contextType = TopicsListContext;
@@ -17,7 +16,6 @@ class TopicsList extends React.Component {
 
   render() {
     const { topicsList = [] } = this.context;
-    console.log(this.changeImage);
     return topicsList.map(topic =>
       <Topics
         key={topic.topic_id}

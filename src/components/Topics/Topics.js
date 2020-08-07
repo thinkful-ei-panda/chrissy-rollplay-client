@@ -16,7 +16,6 @@ class Topics extends React.Component {
 
   changeImage = () => {
     const randomImage = Math.floor(Math.random() * this.state.images.length);
-    console.log('changeImage fired')
     document.getElementById("pixel-portrait").src = this.state.images[randomImage]
   }
 
@@ -32,7 +31,7 @@ class Topics extends React.Component {
   render = () => {
     const { id, title, system, date, owner } = this.props;
     return (
-      <li key={id} className="ticket box effect5">
+      <li key={id} className="topic box effect5">
         <h2>User: {owner}</h2>
         <h3>Title: {title}</h3>
         <h4>RPG System: {system}</h4>

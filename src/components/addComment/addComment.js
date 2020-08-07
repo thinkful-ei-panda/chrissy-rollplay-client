@@ -15,12 +15,15 @@ class AddComment extends Component {
     };
   };
 
+
+  //Fills state with text in inputs/textarea
   handleChange = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
     this.setState({[nam]: val})
   }
 
+  //Submits the contents of the inputs/textarea and submits them via ApiService.postComment
   handleSubmitNewComment = (event) => {
     const { comment_owner, comment_passphrase, comment_desc } = this.state;
     const { topicId, handleCancelComment } = this.props;

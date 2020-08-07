@@ -1,11 +1,11 @@
 import React from 'react';
-import './Comments.css';
 import ApiService from '../../services/api-service';
 import CommentsContext from '../../contexts/CommentsContext';
 
 class Comments extends React.Component {
   static contextType = CommentsContext;
 
+  //Uses comment ID to delete from the db, then topic id to retrieve remaining comments and re-render the list
   handleDeleteComment = (event) => {
     const { id, topic_id } = this.props;
     event.preventDefault();

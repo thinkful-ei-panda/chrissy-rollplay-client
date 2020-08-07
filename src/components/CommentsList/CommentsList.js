@@ -2,7 +2,6 @@ import React from 'react';
 import Comments from '../Comments/Comments.js';
 import ApiService from '../../services/api-service.js';
 import CommentsContext from '../../contexts/CommentsContext.js';
-import './CommentsList.css';
 
 class CommentsList extends React.Component {
   static contextType = CommentsContext;
@@ -18,7 +17,7 @@ class CommentsList extends React.Component {
 
   render() {
     const { commentsList = [] } = this.context;
-    const { id, editComment } = this.props;
+    const { id } = this.props;
     return commentsList.map(comment =>
           <Comments 
             key={comment.comment_id}

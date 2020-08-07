@@ -22,7 +22,6 @@ export class CommentsContextProvider extends Component {
   };
 
   setCommentsList = (commentsList) => {
-    console.log('I fired');
     this.setState({ commentsList });
   };
 
@@ -47,6 +46,7 @@ export class CommentsContextProvider extends Component {
   };
 
   setError = (error) => {
+    console.error(error);
     this.setState({ error });
   };
 

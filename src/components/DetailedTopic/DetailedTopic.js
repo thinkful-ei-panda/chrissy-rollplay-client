@@ -36,7 +36,6 @@ class DetailedTopic extends React.Component {
   componentDidMount() {
     this.context.clearError();
     const id = this.props.match.params.id;
-    console.log(id)
     ApiService.getTopic(id)
       .then(this.context.setTopicContent)
       .catch(this.context.setError)
@@ -44,7 +43,6 @@ class DetailedTopic extends React.Component {
 
   handleDeleteTopic = (event) => {
     const { topicContent = {}, setSelectedStart } = this.context;
-    console.log(topicContent.topic_id)
     event.preventDefault();
     ApiService.deleteTopic(topicContent.topic_id)
       .then(setSelectedStart)
@@ -57,19 +55,16 @@ class DetailedTopic extends React.Component {
     this.setState({[nam]: val})
   }
 
-
-
+  //Renders differently based on booleans in state
   render() {
     const { topicContent = {}, setSelectedStart } = this.context;
     const { commenting, editingTopic } = this.state;
     const topic_id = this.props.match.params.id;
-    console.log(topic_id)
       if (commenting === true && editingTopic === false) {
-        console.log('commenting true')
         return (
           <section class="detailed-topic-box">
             <section className="detailedTopic">
-              <li key="" className="ticket">
+              <li key={topic_id} className="topic">
                 <h1>Title: {topicContent.title}</h1>
                 <h3>User: {topicContent.topic_owner}</h3>
                 <h4>RPG System: {topicContent.rpg_system}</h4>
@@ -86,17 +81,15 @@ class DetailedTopic extends React.Component {
           </section>
       )
     } else if (commenting === false && editingTopic === true) {
-      console.log('editing true')
       return (
         <section className="detailed-topic-box">
           <EditTopic cancelEdit={this.handleCancelEditTopic} topicId={this.props.match.params.id} />
         </section>
       )
     } else {
-      console.log('normal view')
       return (
         <section className="detailed-topic-box"> 
-          <li key="" className="ticket">
+          <li key="" className="topic">
             <h1>Title: {topicContent.title}</h1>
             <h3>User: {topicContent.topic_owner}</h3>
             <h4>RPG System: {topicContent.rpg_system}</h4>
