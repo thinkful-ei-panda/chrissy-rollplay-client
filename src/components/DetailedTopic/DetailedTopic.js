@@ -35,7 +35,7 @@ class DetailedTopic extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
-    const topic_id = this.topicIdSelector();
+    const topic_id = this.props?.match?.params?.id;
     ApiService.getTopic(topic_id)
       .then(this.context.setTopicContent)
       .catch(this.context.setError)
@@ -55,23 +55,11 @@ class DetailedTopic extends React.Component {
     this.setState({[nam]: val})
   }
 
-  topicIdSelector = () => {
-    // Might want to move this to a utility
-    const {
-      match: {
-        params: {
-          id
-        } = {}
-      } = {}
-    } = this.props;
-    return id;
-  }
-
   //Renders differently based on booleans in state
   render() {
     const { topicContent = {}, setSelectedStart } = this.context;
     const { commenting, editingTopic } = this.state;
-    const topic_id = this.topicIdSelector();
+    const topic_id = this.props?.match?.params?.id;
       if (commenting === true && editingTopic === false) {
         return (
           <section class="detailed-topic-box">
