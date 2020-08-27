@@ -88,7 +88,7 @@ const ApiService = {
       )
   },
   getAllComments() {
-    return fetch(`${config.API_ENDPOINT}/comments/comments`, {
+    return fetch(`${config.API_ENDPOINT}comments/comments`, {
       method: 'GET',
       headers: {
         'content-type':'application/json'
@@ -102,7 +102,7 @@ const ApiService = {
   },
   postComment(commentOwner, commentPassphrase, commentDesc, commentThread) {
     console.log('postComment fired');
-    return fetch(`${config.API_ENDPOINT}/comments/${commentThread}`, {
+    return fetch(`${config.API_ENDPOINT}comments/${commentThread}`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -122,7 +122,7 @@ const ApiService = {
   },
   editComment(comment_id, comment_desc) {
     console.log(comment_id)
-    return fetch(`${config.API_ENDPOINT}/comments/${comment_id}`, {
+    return fetch(`${config.API_ENDPOINT}comments/${comment_id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
@@ -135,7 +135,7 @@ const ApiService = {
   },
   deleteComment(comment_id) {
     console.log(comment_id, 'delete comment fired')
-    return fetch(`${config.API_ENDPOINT}/comments/${comment_id}`, {
+    return fetch(`${config.API_ENDPOINT}comments/${comment_id}`, {
       method: 'DELETE',
     })
   },
