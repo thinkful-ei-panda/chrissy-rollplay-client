@@ -27,7 +27,7 @@ const ApiService = {
           : res.json()
       )
   },
-  postTopic( title, topic_owner, rpg_system, topic_desc, topic_passphrase) {
+  postTopic(title, topic_owner, rpg_system, topic_desc, topic_passphrase) {
     return fetch(`${config.API_ENDPOINT}topics`, {
       method: 'POST',
       headers: {
@@ -47,7 +47,7 @@ const ApiService = {
           : res.json()
       )
   },
-  editTopic(topic_id, title, topic_desc, rpg_system ) {
+  editTopic(topic_id, title, topic_desc, rpg_system) {
     console.log(topic_id)
     return fetch(`${config.API_ENDPOINT}topics/${topic_id}`, {
       method: 'PATCH',
@@ -73,9 +73,9 @@ const ApiService = {
       },
     })
   },
-  getComments(topicId) {
-    console.log(topicId);
-    return fetch(`${config.API_ENDPOINT}comments/${topicId}`, {
+  getComments(topic_id) {
+    console.log(topic_id);
+    return fetch(`${config.API_ENDPOINT}comments/${topic_id}`, {
       method: 'GET',
       headers: {
         'content-type':'application/json'
