@@ -15,6 +15,7 @@ class Landing extends React.Component {
     }
   }
 
+  //The following alters state to indicate whether the addingTopic form should render.
   handleAddTopicClicked = () => {
     this.setState({addingTopic : true})
   }
@@ -23,6 +24,7 @@ class Landing extends React.Component {
     this.setState({addingTopic : false})
   }
 
+  //Alters rendering based on whether or not selectedStart or addingTopic have been toggled. Determines whether to render the start page, topics list, or addTopic form.
   renderPages() {
     const { selectedStart ,setSelectedStart, clearSelectedStart } = this.context;
     const { addingTopic } = this.state;

@@ -14,12 +14,14 @@ class EditTopic extends Component {
     };
   };
 
+  //Holds data typed in input slots, setting the state to reflect those in an object.
   handleChange = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
     this.setState({[nam]: val})
   }
 
+  //Submits new title, rpg_system or topic_desc based on objects held in state. Upon submit, resets state to close the editTopic form.
   handleSubmitEditTopic = (event) => {
     const { title, rpg_system, topic_desc } = this.state;
     const { topicId, cancelEdit } = this.props;

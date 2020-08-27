@@ -17,6 +17,8 @@ class DetailedTopic extends React.Component {
     }
   };
 
+
+  //The following toggles state to reflect Adding Comments or Editing Comments.
   handleAddComment = () => {
     this.setState({commenting: true})
   };
@@ -35,12 +37,13 @@ class DetailedTopic extends React.Component {
 
   componentDidMount() {
     this.context.clearError();
-    const id = this.props.match.params.id;
-    ApiService.getTopic(id)
+    const topic_id = this.props?.match?.params?.id;
+    ApiService.getTopic(topic_id)
       .then(this.context.setTopicContent)
       .catch(this.context.setError)
   }
 
+  //Deletes topic by ID.
   handleDeleteTopic = (event) => {
     const { topicContent = {}, setSelectedStart } = this.context;
     event.preventDefault();
@@ -49,6 +52,7 @@ class DetailedTopic extends React.Component {
       .catch(this.context.setError)
   }
 
+  //Holds data typed in input slots, setting the state to reflect those in an object.
   handleChange = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
@@ -59,7 +63,7 @@ class DetailedTopic extends React.Component {
   render() {
     const { topicContent = {}, setSelectedStart } = this.context;
     const { commenting, editingTopic } = this.state;
-    const topic_id = this.props.match.params.id;
+    const topic_id = this.props?.match?.params?.id;
       if (commenting === true && editingTopic === false) {
         return (
           <section class="detailed-topic-box">
@@ -76,14 +80,14 @@ class DetailedTopic extends React.Component {
               <AddComment handleCancelComment={this.handleCancelComment} topicId={topic_id} />
             </section>
             <section className="commentsBox">
-              <CommentsList id={this.props.match.params.id} />
+              <CommentsList id={topic_id} />
             </section>
           </section>
       )
     } else if (commenting === false && editingTopic === true) {
       return (
         <section className="detailed-topic-box">
-          <EditTopic cancelEdit={this.handleCancelEditTopic} topicId={this.props.match.params.id} />
+          <EditTopic cancelEdit={this.handleCancelEditTopic} topicId={topic_id} />
         </section>
       )
     } else {
@@ -104,7 +108,7 @@ class DetailedTopic extends React.Component {
             </Link>
           </li>
           <section className="commentsBox">
-            <CommentsList id={this.props.match.params.id} />
+            <CommentsList id={topic_id} />
           </section>
         </section>          
     )

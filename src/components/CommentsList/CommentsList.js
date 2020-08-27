@@ -6,6 +6,7 @@ import CommentsContext from '../../contexts/CommentsContext.js';
 class CommentsList extends React.Component {
   static contextType = CommentsContext;
 
+  //Retrieves comments related to the selected topic by the topic's ID.
   componentDidMount() {
     const { id } = this.props;
     this.context.clearError()

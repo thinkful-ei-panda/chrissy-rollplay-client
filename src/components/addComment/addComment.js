@@ -20,7 +20,7 @@ class AddComment extends Component {
   handleChange = (event) => {
     let nam = event.target.name;
     let val = event.target.value;
-    this.setState({[nam]: val})
+    this.setState({[nam]: val});
   }
 
   //Submits the contents of the inputs/textarea and submits them via ApiService.postComment

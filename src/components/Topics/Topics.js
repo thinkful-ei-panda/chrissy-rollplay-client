@@ -14,11 +14,8 @@ class Topics extends React.Component {
     }
   }
 
-  changeImage = () => {
-    const randomImage = Math.floor(Math.random() * this.state.images.length);
-    document.getElementById("pixel-portrait").src = this.state.images[randomImage]
-  }
 
+  //Deletes topic by ID.
   handleDeleteTopic = (event) => {
     const { id } = this.props;
     event.preventDefault();
